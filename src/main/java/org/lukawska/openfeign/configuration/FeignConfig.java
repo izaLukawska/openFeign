@@ -2,6 +2,8 @@ package org.lukawska.openfeign.configuration;
 
 import feign.Logger;
 import feign.codec.ErrorDecoder;
+
+
 import org.lukawska.openfeign.exception.CustomErrorDecoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

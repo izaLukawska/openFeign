@@ -2,14 +2,22 @@ package org.lukawska.openfeign.exception;
 
 import feign.Response;
 import feign.codec.ErrorDecoder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 
 public class CustomErrorDecoder implements ErrorDecoder {
 
 	private final ErrorDecoder defaultErrorDecoder = new Default();
 
+	@Value("${custom.error.decoder.enabled:true}")
+	private boolean enabled;
+
 	@Override
 	public Exception decode(String methodKey, Response response) {
+		if (!enabled) {
+			return defaultErrorDecoder.decode(methodKey, response);
+		}
+
 		HttpStatus status = HttpStatus.valueOf(response.status());
 
 		switch (status){

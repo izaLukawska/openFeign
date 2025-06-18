@@ -1,18 +1,16 @@
 package org.lukawska.openfeign.client;
 
-import org.lukawska.openfeign.configuration.FeignConfig;
 import org.lukawska.openfeign.dto.UserDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
-		name = "user-service",
+		name = "user-service-cb",
 		url = "${app.user-service.url}",
-		configuration = FeignConfig.class,
 		fallback = UserFeignClientFallback.class
 )
-public interface UserFeignClient {
+public interface UserFeignClientWithFallback {
 
 	@GetMapping("/users/{id}")
 	UserDto getUser(@PathVariable("id") Long id);
