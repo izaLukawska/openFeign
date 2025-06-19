@@ -37,7 +37,7 @@ public class CustomErrorDecoder implements ErrorDecoder {
 		try {
 			return IOUtils.toString(response.body().asInputStream(), StandardCharsets.UTF_8);
 		} catch (IOException e) {
-			return "Unknown error";
+			return "Validation error";
 		}
 	}
 }

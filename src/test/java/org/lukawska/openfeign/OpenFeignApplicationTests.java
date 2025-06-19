@@ -9,5 +9,4 @@ class OpenFeignApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
