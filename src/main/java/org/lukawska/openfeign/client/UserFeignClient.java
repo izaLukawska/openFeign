@@ -4,8 +4,9 @@ import org.lukawska.openfeign.configuration.FeignConfig;
 import org.lukawska.openfeign.dto.UserDto;
 import org.lukawska.openfeign.fallback.UserWebClientFallback;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @FeignClient(
 		name = "user-service",
@@ -17,4 +18,7 @@ public interface UserFeignClient {
 
 	@GetMapping("/users/{id}")
 	UserDto getUserById(@PathVariable Long id);
+
+	@PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	String uploadFile(@RequestPart("file") MultipartFile file);
 }
