@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
 		name = "user-service",
-		url = "${app.user-service.url}",
-		configuration = FeignConfig.class,
-		fallback = UserFeignClientFallback.class
+		url = "${app.user-service.url:https://api.example.com}",
+		configuration = FeignConfig.class
 )
 public interface UserFeignClient {
 
 	@GetMapping("/users/{id}")
-	UserDto getUser(@PathVariable("id") Long id);
+	UserDto getUserById(@PathVariable("id") Long id);
+
 }

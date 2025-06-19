@@ -4,13 +4,12 @@ import org.lukawska.openfeign.dto.UserDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserFeignClientFallback implements UserFeignClientWithFallback {
-
+public class UserFeignClientFallback implements UserFeignClient{
 	@Override
-	public UserDto getUser(Long id) {
+	public UserDto getUserById(Long id) {
 		return UserDto.builder()
 				.id(id)
-				.username("Fallback User")
+				.username("Fallback user")
 				.build();
 	}
 }

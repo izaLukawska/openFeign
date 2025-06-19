@@ -1,11 +1,11 @@
 package org.lukawska.openfeign.service;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class TokenService {
 
-	public String getValidToken() {
-		return "test token";
+	public String getValidToken(){
+		return "TOKEN";
 	}
 }

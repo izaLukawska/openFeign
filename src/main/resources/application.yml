@@ -5,29 +5,3 @@ app:
   user-service:
     url: localhost:8080
 
-custom:
-  error:
-    decoder:
-      enabled: false
-
-resilience4j:
-  retry:
-    instances:
-      userServiceRetry:
-        maxAttempts: 3
-        waitDuration: 1s
-        enable-exponential-backoff: true
-        exponential-backoff-multiplier:
-        exponential-max-wait-duration:
-          seconds: 5
-
-
-  circuitbreaker:
-    instances:
-      userServiceCB:
-        slidingWindowSize: 5
-        minimumNumberOfCalls: 5
-        failureRateThreshold: 50
-        waitDurationInOpenState: 10s
-        permittedNumberOfCallsInHalfOpenState: 2
-        automaticTransitionFromOpenToHalfOpenEnabled: true

@@ -18,8 +18,10 @@ public class AuthRequestInterceptor implements RequestInterceptor {
 	@Override
 	public void apply(RequestTemplate requestTemplate) {
 		String token = tokenService.getValidToken();
-		requestTemplate.header("Authorization", "Bearer" + token);
-		requestTemplate.header("Custom-request-ID", UUID.randomUUID().toString());
-		requestTemplate.header("Custom-timestamp", Instant.now().toString());
+		requestTemplate.header("Authorization", "Bearer " + token);
+
+		requestTemplate.header("X-Request-ID", UUID.randomUUID().toString());
+
+		requestTemplate.header("X-Timestamp", Instant.now().toString());
 	}
 }
