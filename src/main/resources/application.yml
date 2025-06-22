@@ -4,4 +4,3 @@ server:
 app:
   user-service:
     url: http://localhost:8080
-

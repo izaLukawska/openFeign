@@ -12,10 +12,7 @@ public class UserWebClientFallback implements UserWebClientWithFallback {
 	@Override
 	public Mono<UserDto> getUserById(Long id) {
 		log.warn("Fallback activated for user id: {}", id);
-		return Mono.just(UserDto.builder()
-				.id(id)
-				.username("Fallback User")
-				.build());
+		return Mono.just(new UserDto(id, "Fallback user"));
 	}
 }
 

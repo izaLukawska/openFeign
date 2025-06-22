@@ -5,7 +5,6 @@ import feign.codec.ErrorDecoder;
 
 
 import io.micrometer.core.instrument.util.IOUtils;
-import lombok.RequiredArgsConstructor;
 
 
 import org.springframework.http.HttpStatus;
@@ -16,7 +15,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 @Component
-@RequiredArgsConstructor
 public class CustomErrorDecoder implements ErrorDecoder {
 
 	private final ErrorDecoder defaultErrorDecoder = new Default();
@@ -28,7 +26,7 @@ public class CustomErrorDecoder implements ErrorDecoder {
 		return switch (httpStatus) {
 			case NOT_FOUND -> new UserNotFoundException("User not found");
 			case BAD_REQUEST -> new ValidationException(extractErrorMessage(response));
-			case UNAUTHORIZED -> new AuthenticationException("Unauthorized");
+			case UNAUTHORIZED -> new AuthenticationException("AuthenticationException");
 			default -> defaultErrorDecoder.decode(methodKey, response);
 		};
 	}
