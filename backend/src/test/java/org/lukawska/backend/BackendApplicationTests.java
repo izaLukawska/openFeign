@@ -1,12 +1,13 @@
-package org.lukawska.openfeign;
+package org.lukawska.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class OpenFeignApplicationTests {
+class BackendApplicationTests {
 
 	@Test
 	void contextLoads() {
 	}
+
 }
